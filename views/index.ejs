@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div id="navbar" class = "row text-center text-info"> 
+        <div class = "col">
+            [navbar]
+        </div> 
+    </div> <!-- #navbar -->
+
+    <h1 class = "col-12 text-center mt-4"><%= title %></h1>
+    <p class = "col-12 text-center">Welcome to <%= title %></p></body>
+
+    <div id="search" class = "row justify-content-center mt-5">
+        <input type="text" class = "col-sm-4 form-control p-2 m-2" id="search-bar" name="search-bar" placeholder="Find songs by audio features">
+        <button class = "col-sm-1 btn btn-outline-success text-center p-2 m-2"> Search </button>
+
+        <!-- <form id=""></form> -->
+    </div> <!--#search-->
+
+    <div id="search-results-container" class="row justify-content-center mt-5">
+        <div id="search-results" class="col-8">
+            <div id="results-row" class="row justify-content-center">
+                <div class = "col-3 text-center border rounded p-1"> placeholder </div>
+                <div class = "col-3 text-center border rounded mr-1 ml-1 p-1"> placeholder </div>
+                <div class = "col-3 text-center border rounded p-1"> placeholder </div>
+            </div>
+        </div> <!--#search-results-->
+    </div>
+
+
+</html>
+
