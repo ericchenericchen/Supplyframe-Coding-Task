@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('Sending troops :horse: :horse: :horse:');
+  // res.redirect('../');
+  res.send('CALLED BACK!! Sending troops :horse: :cow: :horse:');
 });
 
 module.exports = router;
