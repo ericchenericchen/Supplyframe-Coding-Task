@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('./partials/head.ejs'); %>
+    <%- include('./partials/head.ejs'); %>
 </head>
 <body>
     <h1><%= message %></h1>
     <h2>Error Code: <%= error.status %></h2>
-    <pre><%= error.stack %></pre></body>
+    <pre><%= error.stack %></pre>
+</body>
 </html>
