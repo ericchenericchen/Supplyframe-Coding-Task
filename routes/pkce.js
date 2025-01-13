@@ -1,5 +1,7 @@
 // Code for PKCE OAuth taken from Spotify API documentation
 var express = require('express');
+var crypto = require('crypto');
+
 var router = express.Router();
 
 // Random Seed helper
@@ -11,9 +13,9 @@ const generateRandomString = (length) => {
 
 // Encrypt helper
 const sha256 = async (plain) => {
-    const encoder = new TextEncoder()
-    const data = encoder.encode(plain)
-    return window.crypto.subtle.digest('SHA-256', data)
+    const encoder = new TextEncoder();
+    const data = encoder.encode(plain);
+    return crypto.createHash('sha256').update(data).digest('hex');
 }
 
 // Encode helper
@@ -24,12 +26,13 @@ return btoa(String.fromCharCode(...new Uint8Array(input)))
     .replace(/\//g, '_');
 }
 
-// Overall AuthUrl
-const authUrlGenerator = async (req) => {
+// Create url for authentication request
+const authUrlGenerator = async () => {
+    console.log()
     const codeVerifier  = generateRandomString(64);
 
-    // Store the codeVerifier
-    req.session.codeVerifier = codeVerifier;
+    // // Store the codeVerifier
+    // req.session.codeVerifier = codeVerifier;
 
     // Set Code Challenge
     const hashed = await sha256(codeVerifier);
@@ -58,8 +61,15 @@ const authUrlGenerator = async (req) => {
 
 /* GET authentication from Spotify. */
 router.get('/', async function(req, res, next) {
-    authUrl = await authUrlGenerator(req);
-    res.send(authUrl);
+    console.log('we out here');
+    try{
+        authUrl = await authUrlGenerator();
+    }
+    catch(error){
+        console.log(error);
+        throw error;
+    }
+    res.redirect(authUrl+"&show_dialog=true");
 });
 
 module.exports = router;

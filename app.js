@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pkceRouter  = require('./routes/pkce');
 var callbackRouter  = require('./routes/callback');
+var asyncRouter  = require('./routes/async');
 
 // Launch App
 var app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route Assignment
 app.use('/', indexRouter);
+app.use('/async', asyncRouter);
 app.use('/users', usersRouter);
 app.use('/pkce', pkceRouter);
 app.use('/callback', callbackRouter);
